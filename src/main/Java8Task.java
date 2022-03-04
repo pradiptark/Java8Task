@@ -40,7 +40,7 @@ public class Java8Task {
     }
 
     public static void findStartsWithOne(List<Integer> listInt) {
-        //    2. Find all numbers starting with 1 using Stream
+//        2. Find all numbers starting with 1 using Stream
 ///        1st Method
         List<Integer> numStartWithOneA = listInt.stream()
                 .map(n -> n.toString())
