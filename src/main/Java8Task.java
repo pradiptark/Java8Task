@@ -35,33 +35,15 @@ public class Java8Task {
         List<Integer> evenNumbers = listInt.stream()
                 .filter(num -> (num % 2) == 0)
                 .collect(Collectors.toList());
-
         System.out.println("Even = " + evenNumbers);
     }
 
     public static void findStartsWithOne(List<Integer> listInt) {
 //        2. Find all numbers starting with 1 using Stream
-///        1st Method
         List<Integer> numStartWithOneA = listInt.stream()
-                .map(n -> n.toString())
-                .filter(s -> s.startsWith("1"))
-                .map(s -> Integer.parseInt(s))
+                .filter(n -> n.toString().startsWith("1"))
                 .collect(Collectors.toList());
         System.out.println("Starts with 1 (Method A) = " + numStartWithOneA);
-
-///        2nd Method
-        List<Integer> numStartWithOneB = listInt.stream()
-                .filter(n -> {
-                    boolean b = false;
-                    while(n > 0) {
-                        b = (n == 1);
-                        n /= 10;
-                        if (b) break;
-                    };
-                    return b;
-                })
-                .collect(Collectors.toList());
-        System.out.println("Starts with 1 (Method B) = " + numStartWithOneB);
     }
 
     public static void calcTotalElements(List<Integer> listInt){
@@ -75,7 +57,6 @@ public class Java8Task {
         List<Integer> sortedList = listInt.stream()
                 .sorted()
                 .collect(Collectors.toList());
-
         System.out.println("Sorted = " + sortedList);
     }
 
