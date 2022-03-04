@@ -16,23 +16,31 @@ public class Java8Task {
 
         List<Integer> listInt = new ArrayList<Integer>();
 
-        for(int i = 50; i >= 1; i-- ){
+        for(int i = 50; i >= 1; i-- )
             listInt.add(i);
-        }
 
-        for(int i = 51; i <= 100; i++ ){
+        for(int i = 51; i <= 100; i++ )
             listInt.add(i);
-        }
+
         System.out.println("Original = " + listInt);
 
+        findEven(listInt);
+        findStartsWithOne(listInt);
+        calcTotalElements(listInt);
+        sortAll(listInt);
+    }
+
+    public static void findEven(List<Integer> listInt) {
 //    1. Find all the even numbers using Stream
         List<Integer> evenNumbers = listInt.stream()
                 .filter(num -> (num % 2) == 0)
                 .collect(Collectors.toList());
 
         System.out.println("Even = " + evenNumbers);
+    }
 
-//    2. Find all numbers starting with 1 using Stream
+    public static void findStartsWithOne(List<Integer> listInt) {
+        //    2. Find all numbers starting with 1 using Stream
 ///        1st Method
         List<Integer> numStartWithOneA = listInt.stream()
                 .map(n -> n.toString())
@@ -40,7 +48,6 @@ public class Java8Task {
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
         System.out.println("Starts with 1 (Method A) = " + numStartWithOneA);
-
 
 ///        2nd Method
         List<Integer> numStartWithOneB = listInt.stream()
@@ -54,15 +61,16 @@ public class Java8Task {
                     return b;
                 })
                 .collect(Collectors.toList());
-
         System.out.println("Starts with 1 (Method B) = " + numStartWithOneB);
+    }
 
+    public static void calcTotalElements(List<Integer> listInt){
 //    3. Find the total number of elements using Stream
-        Long totalElements = listInt.stream()
-                .collect(Collectors.counting());
-
+        Long totalElements = listInt.stream().count();
         System.out.println("Total elements = " + totalElements);
+    }
 
+    public static void sortAll(List<Integer> listInt){
 //    4. Sort all numbers using Stream
         List<Integer> sortedList = listInt.stream()
                 .sorted()
@@ -76,24 +84,24 @@ public class Java8Task {
 
         List<Invoice> invoices = new ArrayList<Invoice>();
 
-        invoices.add(new Invoice(1, "Jono Oracle", 500000,"Java Training"));
-        invoices.add(new Invoice(2, "Emil", 400000, "Training Python"));
-        invoices.add(new Invoice(3, "Budi Oracle", 150000, "Headset"));
-        invoices.add(new Invoice(4, "Ika ", 650000, "Backend Training"));
-        invoices.add(new Invoice(5, "Hari Oracle", 2000000, "Monitor"));
-        invoices.add(new Invoice(6, "Fita Oracle", 600000, "Design Training"));
-        invoices.add(new Invoice(7, "Kintan Oracle", 400000,"Training Python"));
-        invoices.add(new Invoice(8, "Dodi Oracle", 550000, "Training C++"));
-        invoices.add(new Invoice(9, "Ghina Oracle", 300000, "Keyboard"));
-        invoices.add(new Invoice(10, "Charlie Oracle", 500000,"Java Training"));
-        invoices.add(new Invoice(11, "Laeli Oracle", 2000000,"Monitor"));
-        invoices.add(new Invoice(11, "Dilla Oracle", 600000,"Design Training"));
+        invoices.add(new Invoice(1, "Oracle", 500000,"Java Training"));
+        invoices.add(new Invoice(2, "Andi", 400000, "Training Python"));
+        invoices.add(new Invoice(3, "Oracle", 150000, "Headset"));
+        invoices.add(new Invoice(4, "Ika", 650000, "Backend Training"));
+        invoices.add(new Invoice(5, "Oracle", 2000000, "Monitor"));
+        invoices.add(new Invoice(6, "Oracle", 600000, "Design Training"));
+        invoices.add(new Invoice(7, "Oracle", 400000,"Training Python"));
+        invoices.add(new Invoice(8, "Oracle", 550000, "Training C++"));
+        invoices.add(new Invoice(9, "Oracle", 300000, "Keyboard"));
+        invoices.add(new Invoice(10, "Oracle", 500000,"Java Training"));
+        invoices.add(new Invoice(11, "Oracle", 2000000,"Monitor"));
+        invoices.add(new Invoice(11, "Oracle", 600000,"Design Training"));
 
         for (Invoice inv:invoices)
             System.out.println(inv);
 
         List<Invoice> oracleAndTrainingInvoices = invoices.stream()
-                .filter(inv -> inv.getCustomer().contains("Oracle"))
+                .filter(inv -> inv.getCustomer() == "Oracle")
                 .filter(inv -> inv.getTitle().contains("Training"))
                 .sorted(Comparator.comparingDouble(Invoice::getAmount))
                 .collect(Collectors.toList());
@@ -110,6 +118,5 @@ public class Java8Task {
         System.out.println("\nFirst 5 Ids of Oracle and Training Invoices");
         for (Integer i:firstFiveIds)
             System.out.println(i);
-
     }
 }

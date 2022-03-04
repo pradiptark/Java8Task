@@ -2,10 +2,9 @@ package main.model;
 
 public class Invoice {
     Integer id;
-    double amount;
+    Double amount;
     String customer;
     String title;
-
 
     public Invoice(Integer id, String customer, double amount, String title){
         this.id = id;
@@ -16,19 +15,20 @@ public class Invoice {
 
     public Integer getId() { return id; }
 
-    public void setId(Integer id) { this.id = id;}
+    public void setId(Integer id) { this.id = id; }
 
     public String getCustomer() { return customer; }
 
-    public void setCustomer(String customer) { this.customer = customer;}
+    public void setCustomer(String customer) { this.customer = customer; }
 
-    public double getAmount() { return amount; }
+    public Double getAmount() { return amount; }
 
-    public void setAmount(double amount) { this.amount = amount;}
+    public void setAmount(Double amount) { this.amount = amount; }
 
     public String getTitle() { return title; }
 
-    public void setTitle(String title) { this.title = title;}
+    public void setTitle(String title) { this.title = title; }
+
 
 
     @Override
